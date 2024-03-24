@@ -19,8 +19,8 @@ endif
 .PHONY: port-forward-prometheus
 port-forward-prometheus:
 	$(eval pod_name = $(shell kubectl get pods --namespace prometheus -l "app.kubernetes.io/name=prometheus,app.kubernetes.io/instance=prometheus" -o jsonpath="{.items[0].metadata.name}"))
-	nohup kubectl --namespace prometheus port-forward $(pod_name) 9090 &
-	@echo prometheus is accessible at http://localhost:9090
+	@kubectl --namespace prometheus port-forward $(pod_name) 9090 > /dev/null 2>&1 &
+	@echo you can now access the Prometheus PushGateway at http://localhost:9090
 
 
 .PHONY: clean
