@@ -11,7 +11,7 @@ endif
 .PHONY: install-prometheus
 install-prometheus:
 ifeq ($(shell helm repo list | grep prometheus-community | wc -l), 0)
-		$(shell helm repo add prometheus-community https://prometheus-community.github.io/helm-charts)
+	$(shell helm repo add prometheus-community https://prometheus-community.github.io/helm-charts)
 endif
 	helm install prometheus prometheus-community/prometheus --create-namespace --namespace prometheus
 	kubectl wait --for=condition=Ready -n prometheus pods -l "app.kubernetes.io/instance=prometheus" --timeout=5m
@@ -21,7 +21,6 @@ port-forward-prometheus:
 	$(eval pod_name = $(shell kubectl get pods --namespace prometheus -l "app.kubernetes.io/name=prometheus,app.kubernetes.io/instance=prometheus" -o jsonpath="{.items[0].metadata.name}"))
 	@kubectl --namespace prometheus port-forward $(pod_name) 9090 > /dev/null 2>&1 &
 	@echo you can now access the Prometheus PushGateway at http://localhost:9090
-
 
 .PHONY: clean
 clean:

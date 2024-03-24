@@ -4,11 +4,9 @@ It can help spinning up a Kind cluster with a local docker registry + prometheus
 
 ## prerequisites
 
+### GNU/Linux distro
+
 ### Docker
-
-### Make
-
-### nohup
 
 ### Kubectl
 
