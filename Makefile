@@ -1,5 +1,5 @@
-.PHONY: install-playground
-install-playground: install-kind install-prometheus port-forward-prometheus
+.PHONY: install
+install: install-kind install-prometheus port-forward-prometheus
 
 .PHONY: install-kind
 install-kind:

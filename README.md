@@ -29,10 +29,10 @@ If this is not the case, simply download the [kind-v0.22.0](https://github.com/k
 ## install the playground
 
 ```bash
-make install-playground
+make install
 ```
 
-### Cleanup
+## Cleanup
 ```bash
 make clean
 ```
